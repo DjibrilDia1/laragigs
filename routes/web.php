@@ -1,23 +1,15 @@
 <?php
 
+use App\Http\Controllers\ListingController;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\HttpFoundation\Request;
+use App\Models\Listing;
 
-Route::get('/',function(){
-    return view('listings',[
-        'headings' => 'data',
-        'listings' => [
-            [
-                'id' => 1,
-                'title' => 'Listing one'
-            ],
-            [
-                'id' => 2,
-                'title' => 'Listing two'
-            ],
-        ]
-    ]);
-});
+
+// ALL Listings
+Route::get('/',[ListingController::class, 'index']);
+
+// Single listing
+Route::get('/listings/{listing}',[ListingController::class,'show']);
 
 
 

@@ -1,5 +1,15 @@
-<h1>{{ $heading }}</h1>
-@foreach ($listings as $listing): 
-    <h2><?php echo $listing['id'];  ?></h2>
-    <p><?php echo $listing['title'] ?></p>
-@endforeach
+@extends('layout')
+
+@section('content')
+    @include('partials._hero')
+    @include('partials._search')
+    <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
+        @unless (count($listings) == 0)
+            @foreach ($listings as $listing)
+                <x-listing-card :listing= "$listing" />
+            @endforeach
+        @else
+            <p>No listings found</p>
+        @endunless
+    </div>
+@endsection
