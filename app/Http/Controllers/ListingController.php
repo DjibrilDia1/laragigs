@@ -11,8 +11,7 @@ class ListingController extends Controller
     public function index()
     {   
         $listing = Listing::all();
-        dd($listing);
-        return view('listings', [
+        return view('listings.index', [
             'listings' => $listing
         ]);
     }
@@ -20,13 +19,8 @@ class ListingController extends Controller
     // show single listing
     public function show(Listing $listing)
     {   
-        $listing = Listing::find($listing);
-        if ($listing) {
-            return view('listing', [
-                'listing' => $listing
-            ]);
-        } else {
-            abort('404');
-        }
+        return view('listings.show', [
+            'listing' => $listing
+        ]);
     }
 }
